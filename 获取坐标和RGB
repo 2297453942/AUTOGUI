@@ -1,0 +1,14 @@
+# -*- coding: UTF-8 -*-
+import pyautogui
+try:
+    while True:
+        x,y=pyautogui.position()
+        pos = 'x:'+str(x).rjust(4)+'y:'+str(y).rjust(4)
+        pox = pyautogui.screenshot().getpixel((x,y))
+        pos+=' RGB:('+str(pox[0]).rjust(4)+str(pox[1]).rjust(4)
+        pos+=','+str(pox[2]).rjust(4)+')'
+        print(pos,end='')
+        print('\b'*len(pos),end='',flush=True)
+        #flush=True打印大量数据时将一部分数据先行输出
+except KeyboardInterrupt:
+    print('沃特')
