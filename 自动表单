@@ -1,21 +1,24 @@
 # -*- coding: UTF-8 -*-
-import pyautogui,time,json,pyperclip
-shuru=(295,374)
-chaxun=(316,646)
-cha=(16,16,16)
-form=['终','于 ','成','功','了',]
-
+import pyautogui,time,pyperclip
+import tkinter,csv
+import tkinter.filedialog
+a=tkinter.filedialog.askopenfilename()
+ex=open(a)
+asd=csv.reader(ex)
+form=list(asd)
+shuru=(191,91)
 pyautogui.PAUSE=0.5         #在每次函数调用等待0.5秒
-for pos in form:
-    time.sleep(2)
-    #暂停2秒
-    pyperclip.copy(pos)
-    #将字符串发送到剪切板
-    while not pyautogui.pixelMatchesColor(chaxun[0],chaxun[1],cha):
+for i in form:
+    for pos in i:
         time.sleep(2)
-    #pyautogui.pixelMatchesColor（x,y（0,0,0））指定坐标，指定像素一致时，返回True
-    pyautogui.click(shuru[0],shuru[1])
-    pyautogui.hotkey('ctrl','a')
-    #pyautogui.hotkey()按下指定键，然后以相反顺序释放
-    pyautogui.hotkey('ctrl','v')
-    pyautogui.click(chaxun[0],chaxun[1])
+        #暂停2秒
+        pyperclip.copy(pos)
+        #将字符串发送到剪切板
+        #pyautogui.pixelMatchesColor（x,y（0,0,0））指定坐标，指定像素一致时，返回True
+        pyautogui.click(shuru[0],shuru[1])
+        time.sleep(3)
+        pyautogui.hotkey('ctrl','a')
+        #pyautogui.hotkey()按下指定键，然后以相反顺序释放
+        pyautogui.hotkey('ctrl','v')
+        pyautogui.hotkey('\n')
+        time.sleep(5)
